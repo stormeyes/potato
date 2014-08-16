@@ -2,9 +2,9 @@
     $CONFIG=array(
         'DB'=>array(
             'HOST'=>'localhost',
-            'DATABASE'=>'golaw',
-            'USERNAME'=>'root',
-            'PASSWORD'=>'002899',
+            'DATABASE'=>'',
+            'USERNAME'=>'',
+            'PASSWORD'=>'',
             'PORT'=>'3306',
             'CHARSET'=>'utf8'
         ),
