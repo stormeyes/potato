@@ -7,7 +7,7 @@
     //RouteMapping,check the URL is callable or not to avoid uncareable fault
     $app->route=array(
         '/'=>'index->index',
-        'test'=>'test->test'
+        '/test'=>'test->test'
     );
     //response the request
     $app->run($_SERVER['REQUEST_URI']);    

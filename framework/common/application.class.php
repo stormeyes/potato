@@ -3,8 +3,8 @@
  class application{
     
     var $route;
-    var $handler;
     var $config;
+    var $handler;
     var $params=array();
     var $dbconnection;
     
@@ -30,27 +30,32 @@
             }
             
             //check the existance of method
-            $this->handler=array(CTL_PATH.$controller.'.ctl.php',$action);
-            if(!is_callable($handler)){
+            include_once(CTL_PATH.$controller.'.ctl.php');
+            if(!method_exists($controller,$action)){
                 if($this->config['DEBUG']){
                     die('控制器'.$controller.'存在,但是不存在'.$action.'方法');
                 }else{
                     die('404');
                 }
             }
-            
+            $this->handler=array($controller,$action);
             return true;
             
         }else{
-            die('This URL not mapping any router');
+            if($this->config['DEBUG']){
+                die('This URL not mapping any router');
+            }else{
+                die('404');
+            }
         }
     }
     
     function run($requestURL){
         if($this->checkRoute($requestURL)){
-            echo 'fuckkkkkkk';
-            call_user_func_array($this->$handler,$this->$params);
-        }      
+            new $this->handler[0];
+            //Dynamic call(动态调用)
+            call_user_func_array($this->handler,$this->params);
+        }
     }
  }
 ?>
