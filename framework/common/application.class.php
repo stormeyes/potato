@@ -1,5 +1,4 @@
 <?php
- 
  class application{
     
     var $route;
@@ -16,14 +15,14 @@
     }
     
     function checkRoute($requestURL){
-        if(array_key_exists($requestURL,$this->route)){
+        if($this->checkRequestURL($requestURL)){
             $mapping=$this->route[$requestURL];
             $controller=explode('->',$mapping)[0];
             $action=explode('->',$mapping)[1];
             //check the existance of controller
             if(!file_exists(CTL_PATH.$controller.'.ctl.php')){
                 if($this->config['DEBUG']){
-                    die('控制器'.$controller.'不存在');
+                    die('controller '.$controller.' not exist!');
                 }else{
                     die('404');
                 }
@@ -33,7 +32,7 @@
             include_once(CTL_PATH.$controller.'.ctl.php');
             if(!method_exists($controller,$action)){
                 if($this->config['DEBUG']){
-                    die('控制器'.$controller.'存在,但是不存在'.$action.'方法');
+                    die('controller '.$controller.' exist,but method '.$action.' does not exist!');
                 }else{
                     die('404');
                 }
@@ -46,6 +45,28 @@
                 die('This URL not mapping any router');
             }else{
                 die('404');
+            }
+        }
+    }
+    
+    function checkRequestURL($requestURL){
+        $requestURLSplit=array_slice(array_filter(explode('/',$requestURL)),0);
+        foreach($this->route as $key => $value){
+            $keySplit=array_slice(array_filter(explode('/',$key)),0);
+            if(count($requestURLSplit)==count($keySplit)){
+                for($i=0;$i<count($keySplit);$i++){
+                    if($keySplit[$i]!==$requestURLSplit[$i]){
+                        if(substr($keySplit[$i],0,1)!='$'){
+                            echo $keySplit[$i];
+                            break;
+                        }else{
+                            array_push($this->params,$requestURLSplit[$i]);
+                        }
+                    }
+                    if($i==count($keySplit)-1){
+                        return true;
+                    }
+                }
             }
         }
     }
