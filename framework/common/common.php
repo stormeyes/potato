@@ -12,6 +12,7 @@
     require_once('db.class.php');
     require_once('application.class.php');
     require_once('controller.class.php');
+    require_once('model.class.php');
     if(DEBUG){
 	    ini_set('html_errors', "On");
 	    ini_set('display_errors', "On");

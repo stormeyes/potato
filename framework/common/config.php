@@ -2,7 +2,7 @@
     $CONFIG=array(
         'DB'=>array(
             'HOST'=>'localhost',
-            'DATABASE'=>'mysql',
+            'DATABASE'=>'test',
             'USERNAME'=>'root',
             'PASSWORD'=>'002899',
             'PORT'=>'3306',
@@ -17,6 +17,7 @@
     define('DEBUG', true);
     define('ROOT_PATH', str_replace('\\', '/', dirname($_SERVER['SCRIPT_FILENAME'])).'/');
     define('CTL_PATH',ROOT_PATH.'/site/controller/');
+    define('MODEL_PATH',ROOT_PATH.'/site/model/');
     define('VIEW_PATH',ROOT_PATH.'/site/view/');
     define('STATIC_PATH',ROOT_PATH.'/site/static/')
 ?>
