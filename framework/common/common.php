@@ -12,13 +12,11 @@
     require_once('db.class.php');
     require_once('application.class.php');
     require_once('controller.class.php');
-    /*
     if(DEBUG){
-	    ini_set('html_errors', 0);
-	    ini_set('display_errors', 0);
+	    ini_set('html_errors', "On");
+	    ini_set('display_errors', "On");
     }else{
-	    ini_set('html_errors', 1);
-	    ini_set('display_errors', 1);
+	    ini_set('html_errors', "Off");
+	    ini_set('display_errors', "Off");
     }
-    */
 ?>
