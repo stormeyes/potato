@@ -4,6 +4,7 @@
     var $route;
     var $config;
     var $handler;
+    var $mapper;
     var $params=array();
     var $dbconnection;
     
@@ -16,7 +17,7 @@
     
     function checkRoute($requestURL){
         if($this->checkRequestURL($requestURL)){
-            $mapping=$this->route[$requestURL];
+            $mapping=$this->route[$this->mapper];
             $controller=explode('->',$mapping)[0];
             $action=explode('->',$mapping)[1];
             //check the existance of controller
@@ -51,19 +52,27 @@
     
     function checkRequestURL($requestURL){
         $requestURLSplit=array_slice(array_filter(explode('/',$requestURL)),0);
+        if($requestURL == '/'){
+            if(array_key_exists('/',$this->route)){
+                $this->mapper=$requestURL;
+                return true;
+            }else{
+                return false;
+            }
+        }
         foreach($this->route as $key => $value){
             $keySplit=array_slice(array_filter(explode('/',$key)),0);
             if(count($requestURLSplit)==count($keySplit)){
                 for($i=0;$i<count($keySplit);$i++){
                     if($keySplit[$i]!==$requestURLSplit[$i]){
                         if(substr($keySplit[$i],0,1)!='$'){
-                            echo $keySplit[$i];
                             break;
                         }else{
                             array_push($this->params,$requestURLSplit[$i]);
                         }
                     }
                     if($i==count($keySplit)-1){
+                        $this->mapper=$key;
                         return true;
                     }
                 }

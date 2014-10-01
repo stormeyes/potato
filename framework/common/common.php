@@ -11,6 +11,7 @@
     require_once('global.function.php');
     require_once('db.class.php');
     require_once('application.class.php');
+    require_once('controller.class.php');
     /*
     if(DEBUG){
 	    ini_set('html_errors', 0);

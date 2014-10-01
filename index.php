@@ -7,7 +7,7 @@
     $app->route=array(
         '/'=>'index->index',
         '/test/'=>'test->test',
-        '/article/$id'=>'article->view($id)'
+        '/article/$id/fuck/$times'=>'article->view'
     );
     //response the request
     $app->run($_SERVER['REQUEST_URI']);    
