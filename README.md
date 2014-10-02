@@ -4,7 +4,7 @@ potato is a php web framework which has the python web framework style
 
 ###Overview
 * Router
-'''
+````
 <?php
     require_once('framework/common/common.php');
     $app=new application();
@@ -15,10 +15,10 @@ potato is a php web framework which has the python web framework style
           '/article/$operation/$id'=>'article->modify'
      );
     $app->run($_SERVER['REQUEST_URI']);
-'''
+````
 
 * Controller
-'''
+````
    class article extends BASE_CTL{
         function view($id){
             $articleModel=article::loadModel('user');
@@ -26,10 +26,10 @@ potato is a php web framework which has the python web framework style
             $article->loadview('view.php',$article);
         }
    }
-'''
+````
 
 * Model
-'''
+````
     class article_model extends BASE_MDL{
         var $tablename='article';
         var $id;
@@ -40,12 +40,12 @@ potato is a php web framework which has the python web framework style
             return $this->get('id=1');
         }
     }
-'''
+````
 
 ###Install
 * Download the sourcecode
 * configure your nginx server conf,there is a sample configure file following:
-'''
+````
 server {
     listen       80;
     server_name  localhost;
@@ -72,7 +72,7 @@ server {
     error_log   /var/log/nginx/potato.error.log;
 }
 
-'''
+````
 * Make sure you have restart the nginx after you change the nginx configure file,and you can visit http://localhost,then you should see welcome message,else you should check your configure again;
 
 ###Developing
