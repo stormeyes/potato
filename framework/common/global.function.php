@@ -19,4 +19,10 @@
         return urldecode(json_encode($arr));
     }
     
+    function safeInput($input){
+        foreach($input as $key=>$value){
+            $input[$key] = htmlspecialchars(stripslashes(trim($value)));
+        }
+        return $input;
+    }
 ?>

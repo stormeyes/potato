@@ -4,15 +4,21 @@
 
     date_default_timezone_set("Asia/Shanghai");
     header("Content-type: text/html; charset=utf-8");
-
-    session_start();
     
     require_once('config.php');
+    
+    function __autoload($className) { 
+        include_once ROOT_PATH.'/framework/utils/'.$className . '.class.php'; 
+    } 
+    
+    session_start();
+    
     require_once('global.function.php');
     require_once('db.class.php');
     require_once('application.class.php');
     require_once('controller.class.php');
     require_once('model.class.php');
+    
     if(DEBUG){
 	    ini_set('html_errors', "On");
 	    ini_set('display_errors', "On");

@@ -1,14 +1,16 @@
 <?php
     class BASE_CTL{
         function __construct(){
-        
+            //avoid injection attack
+            $_POST=safeInput($_POST);
+            $_GET=safeInput($_GET);
         }
         
-        function view($viewFile=false,$parma){
-            if($viewFile){
-            
+        function view($template,$parmas){
+            if($template){
+                echo '============';
             }else{
-                echo $parma;
+                echo $parmas;
             }
         }
     }
