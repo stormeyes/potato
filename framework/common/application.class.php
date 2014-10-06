@@ -25,7 +25,7 @@
                 if($this->config['DEBUG']){
                     die('controller '.$controller.' not exist!');
                 }else{
-                    die('404');
+                    error_handler('404');
                 }
             }
             
@@ -35,17 +35,19 @@
                 if($this->config['DEBUG']){
                     die('controller '.$controller.' exist,but method '.$action.' does not exist!');
                 }else{
-                    die('404');
+                    error_handler('404');
                 }
             }
-            $this->handler=array($controller,$action);
+            //key point! will show up $this not in context if not $ctl=new $controller
+            $ctl=new $controller;
+            $this->handler=array($ctl,$action);
             return true;
             
         }else{
             if($this->config['DEBUG']){
                 die('This URL not mapping any router');
             }else{
-                die('404');
+                error_handler('404');
             }
         }
     }
@@ -82,7 +84,7 @@
     
     function run($requestURL){
         if($this->checkRoute($requestURL)){
-            new $this->handler[0];
+            //array_push($this->params,new $this->handler[0]);
             //Dynamic call(动态调用)
             call_user_func_array($this->handler,$this->params);
         }

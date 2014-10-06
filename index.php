@@ -6,6 +6,7 @@
     //RouteMapping,check the URL is callable or not to avoid uncareable fault
     $app->route=array(
         '/'=>'index->index',
+        '/register-step-1'=>'user->firstRegister',
         '/test/'=>'test->test',
         '/article/$id/fuck/$times'=>'article->view'
     );
