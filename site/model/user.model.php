@@ -9,7 +9,7 @@
             //var_dump($this->db->query('select * from user','array'));
             $this->get('id=1',$this);
             $this->id=2;
-            $this->username='';
+            $this->username='heihei';
             $this->password='fuckman';
             $this->insert();
         }
