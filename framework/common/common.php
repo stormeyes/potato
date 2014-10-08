@@ -1,5 +1,6 @@
 <?php
     error_reporting(E_ALL & ~E_STRICT & ~E_WARNING & ~E_NOTICE);
+    //error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
     $start_time = microtime(true);
 
     date_default_timezone_set("Asia/Shanghai");

@@ -46,5 +46,9 @@
 
 			return $result;
 		}
+		
+		function __destruct(){
+            mysql_close($this->connection);
+        }
 	}
 ?>
