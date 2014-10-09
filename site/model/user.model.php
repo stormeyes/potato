@@ -31,5 +31,10 @@
         function changeStatus($studentnumber,$toStatus){
             $this->update('status='.$toStatus,'studentnumber='.$studentnumber);
         }
+        
+        function validate($studentnumber,$password){
+            //var_dump($this->select("studentnumber=".$studentnumber." and password='".md5($password)."'"));
+            return $this->select("studentnumber=".$studentnumber." and password='".md5($password)."'")?true:false;
+        }
     }
 ?>

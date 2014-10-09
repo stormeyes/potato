@@ -71,6 +71,28 @@
                 error_handler(405);
             }
         }
+     
+     function login(){
+        if($this->request['method']=='POST'){
+            $user=$this->loadModel('user');
+            if($user->validate($_POST['studentnumber'],$_POST['password'])){
+                $singleuser=$user->getUser('studentnumber='.$_POST['studentnumber'])[0];
+                $this->massage['status']='success';
+                $this->massage['uid']=$singleuser['id'];
+                $this->massage['studentnumber']=$singleuser['studentnumber'];
+                $this->massage['lastlogin']=$singleuser['lastlogin'];
+                $this->massage['lastIP']=$singleuser['lastIP'];
+                //we don't use salt as authkey because it's possible that salt be same in different people
+                $this->massage['authkey']=encrypt($singleuser['studentnumber'],'E',$CONFIG['SECRET_KEY']);
+            }else{
+                $this->massage['status']='error';
+                $this->massage['reason']='用户名/密码 错误';
+            }
+            $this->view($template=false,$params=jsonify($this->massage));
+        }else{
+            $this->view($template='login.php');
+        }
+     }
         
     }
 ?>

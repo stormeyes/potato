@@ -2,9 +2,9 @@
     $CONFIG=array(
         'DB'=>array(
             'HOST'=>'localhost',
-            'DATABASE'=>'app',
+            'DATABASE'=>'',
             'USERNAME'=>'root',
-            'PASSWORD'=>'002899',
+            'PASSWORD'=>'',
             'PORT'=>'3306',
             'CHARSET'=>'utf8'
         ),

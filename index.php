@@ -8,6 +8,7 @@
         '/'=>'index->index',
         '/register'=>'user->register',
         '/sendSMS'=>'user->sendSMS',
+        '/login'=>'user->login',
         '/article/$id/fuck/$times'=>'article->view'
     );
     //response the request
