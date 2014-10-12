@@ -24,9 +24,9 @@
                     $this->massage['status']='error';
                     $this->massage['reason']='此用户已验证手机，请直接登陆';
                 }
-                $this->view($template=false,$params=jsonify($this->massage));
+                $this->loadview($template=false,$params=jsonify($this->massage));
             }else{
-                $this->view($template='index.php');
+                $this->loadview($template='index.php');
             }
         }
         
@@ -66,7 +66,7 @@
                         $this->massage['reason']='此用户已注册';
                     }
                 }
-                $this->view($template=false,$params=jsonify($this->massage));
+                $this->loadview($template=false,$params=jsonify($this->massage));
             }else{
                 error_handler(405);
             }
@@ -88,9 +88,9 @@
                 $this->massage['status']='error';
                 $this->massage['reason']='用户名/密码 错误';
             }
-            $this->view($template=false,$params=jsonify($this->massage));
+            $this->loadview($template=false,$params=jsonify($this->massage));
         }else{
-            $this->view($template='login.php');
+            $this->loadview($template='login.php');
         }
      }
         

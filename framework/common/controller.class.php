@@ -16,11 +16,11 @@
             return new $model;
         }
         
-        function view($template,$parmas){
+        function loadview($template,$params){
             if($template){
                 include_once VIEW_PATH.$template;
             }else{
-                echo $parmas;
+                echo $params;
             }
         }
     }
