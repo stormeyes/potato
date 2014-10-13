@@ -20,7 +20,7 @@
                 if($user->getUser('studentnumber='.$studentnumber)){
                     $form=new form(array(
                         'type'=>'not_empty',
-                        'category'=>'not_empyt',
+                        'category'=>'not_empty',
                         'count'=>'number'
                     ));
                     
