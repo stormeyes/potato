@@ -41,9 +41,12 @@
                         $this->massage['status']='error';
                         $this->massage['reason']=$error;
                     }else{
-                        $qesData=$questions->getquestions($_POST['type'],$_POST['category'],(int)$_POST['count']);
+                        $qesData=$questions->getQuestions($_POST['type'],$_POST['category'],(int)$_POST['count']);
+                        //var_dump($qesData);
                         $this->massage['status']='success';
+                        //$this->massage['questionList']=array();
                         $this->massage['questionList']=$qesData;
+                        //echo json_encode($this->massage,JSON_PRETTY_PRINT);
                    }
                 }else{
                     $this->massage['status']='error';

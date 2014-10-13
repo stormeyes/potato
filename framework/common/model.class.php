@@ -6,12 +6,12 @@
             $this->db=new db();
         }
         
-        function select($condition){
+        function select($condition,$echosql=false){
             $select="select * from ".$this->tablename." where ".$condition;
-            return $this->db->query($select,'array');
+            return $this->db->query($select,'array',$echosql);
         }
         
-        function insert(){
+        function insert($echosql=false){
             $attr=get_object_vars($this);
             unset($attr['db']);
             unset($attr['tablename']);
@@ -26,17 +26,17 @@
             }
             $insert="insert into ".$this->tablename."(".implode(',',array_keys($attr)).") values(".implode(',',array_values($attr)).")";
             //echo $insert;
-            $this->db->query($insert);
+            $this->db->query($insert,'array',$echosql);
         }
         
-        function update($set,$filter){
+        function update($set,$filter,$echosql=false){
             $update="update ".$this->tablename." set ".$set." where ".$filter;
             $this->db->query($update);
         }
         
         function delete($filter){
             $delete="delete from ".$this->tablename." where ".$filter;
-            $this->db->query($delete);
+            $this->db->query($delete,'array',$echosql);
         }
         
     }

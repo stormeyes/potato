@@ -17,7 +17,7 @@
     
     function jsonify($arr){
         foreach($arr as $key=>$value){
-            $arr[$key]=urlencode($value);
+            $arr[$key]=url_encode($value);
         }
         header('Content-type: application/json');
         //or you can use return urldecode(json_encode($arr,JSON_PRETTY_PRINT)) where php_version>=5.4;
@@ -29,6 +29,18 @@
             $input[$key] = htmlspecialchars(stripslashes(trim($value)));
         }
         return $input;
+    }
+    
+    function url_encode($str) {
+        if(is_array($str)) {
+            foreach($str as $key=>$value){
+                $str[urlencode($key)] = url_encode($value);
+            }
+        }else{
+            $str = urlencode($str);
+        }
+     
+        return $str;
     }
     
     function prettyPrint($json)

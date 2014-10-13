@@ -28,7 +28,7 @@
         }
         
         function getQuestions($type,$category,$count){
-            return $this->select("type='$type' and category='$category' ORDER BY RNAD() limit $count");
+            return $this->select("type='$type' and category='$category' ORDER BY RAND() limit $count");
         }
     }
 ?>
