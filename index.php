@@ -9,6 +9,7 @@
         '/register'=>'user->register',
         '/sendSMS'=>'user->sendSMS',
         '/login'=>'user->login',
+        '/get/questions'=>'questions->getquestions',
         '/add'=>'questions->addChoiceQuestion',
         '/article/$id/fuck/$times'=>'article->view'
     );

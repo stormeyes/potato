@@ -26,5 +26,9 @@
         function getChoicelist(){
             return $this->select("type='choice' order by id desc");
         }
+        
+        function getQuestions($type,$category,$count){
+            return $this->select("type='$type' and category='$category' ORDER BY RNAD() limit $count");
+        }
     }
 ?>

@@ -1,7 +1,7 @@
 <?php
     class index{
         function index(){
-            include VIEW_PATH.'index/index.php';
+            echo '<h1>APP系统入口</h1>';
         }
     }
 ?>
