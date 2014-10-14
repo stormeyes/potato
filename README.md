@@ -94,34 +94,34 @@ $app->route(array(
 ))
 ````
 
-*controller
+* controller
 It's time to see where to put our website logic in.You will found a folder called site,which is your website in.
 cd into the site folder and you will see controller,model,static folder.  
 I believe you are an experience web developer,so I will not explain the basic MVC concept.  
 The controller file should be in controller folder and named with controllername.ctl.php and the class name should be the same as the controllername so that the potato framework can load the class.  
 All the controllers should extends from BASE_CTL.  
 
-*model
+* model
 Model layer is the most confuse part in the MVC,sometimes you will found the db class has done so well that you do not need to create model class anymore.  
 Indeed,the db class has wrapped basic CURD operations as select(),insert(),update(),delete() method.In most of cases the model class just simply do nothing but return $this->select()/update()/detele()
 
 ###API
-*sample-site
+* sample-site
 If you download the sourcecode from github,you will find somecode in site folder.  
 Yelp,that's the real website codes to tell you how to use this frmawork
 
-*SQL injection
+* SQL injection
 Don't PANIC.  
 The framwork itself has already do something to prevent SQL injection if only you extends from BASE_CTL.  
 The BASE_CTL class's construct method will filter the $_POST and $_GET value to make them be safe
 
-*json Improved
+* json Improved
 The php json_encode and json_decode function has some problems when you deal with Chinese,and they don't show a pretty view.  
 To solve this problem,we create jsonify function to replace json_encode,jsonify is suitable with all php version and work well with Chinese,what's more,it will give a better view in browser or something else
 
-*error_handler
+* error_handler
 Want to make a 403/404/500 view by yourself? error_hanlder function can help you.Just have a try on error_handler(404)!
 
-*encrypt & generate salt
+* encrypt & generate salt
 It's important to have an reverible algorithm,and salt it's also the key point to built a reverible algorithm.  
 Dont't worry,we have make something for you---encrypt function and generateSalt function
