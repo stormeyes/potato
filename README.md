@@ -1,6 +1,6 @@
 potato
 ======
-potato is a php RESTful framework which inspired by webpy django and flask
+potato is a php RESTful framework which is inspired by webpy django and flask
 
 ###Overview
 * Router
@@ -83,15 +83,15 @@ cd into the potato directory,then you should found index.php,which is the entry 
 In potato,the URL and the controller will be save as associative array which will be receive by route method.
 In the controller side,the request url match by the left side will fall into the method indexpage which in the index class
 ````
-$app->route(array(
+$app->route=array(
     '/'=>'index->indexpage'
-))
+)
 ````
 Of cource,the GET params in the URL is easy to transmit to the controller
 ````
-$app->route(array(
+$app->route=array(
     '/article/$id'=>'article->view'
-))
+)
 ````
 
 * controller  
@@ -103,12 +103,12 @@ All the controllers should extends from BASE_CTL.
 
 * model  
 Model layer is the most confuse part in the MVC,sometimes you will found the db class has done so well that you do not need to create model class anymore.  
-Indeed,the db class has wrapped basic CURD operations as select(),insert(),update(),delete() method.In most of cases the model class just simply do nothing but return $this->select()/update()/detele()
+Indeed,the db class has wrapped basic CURD operations as select(),insert(),update(),delete() method.In most cases the model class just simply do nothing but return $this->select()/update()/detele()
 
 ###API
 * sample-site  
 If you download the sourcecode from github,you will find somecode in site folder.  
-Yelp,that's the real website codes to tell you how to use this frmawork
+Yelp,that's the real website codes to tell you how to use this framework
 
 * SQL injection  
 Don't PANIC.  
