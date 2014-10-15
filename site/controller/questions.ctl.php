@@ -51,6 +51,7 @@
                 }else{
                     $this->massage['status']='error';
                     $this->massage['reason']='authkey错误!';
+                    $this->massage['post']=$_POST;
                 }
                 
                 $this->loadview($template=false,$params=jsonify($this->massage));
