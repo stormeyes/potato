@@ -23,6 +23,18 @@
             $this->insert();
         }
         
+        function addjudgeQuestion($category,$content,$answer){
+            $this->type='judge';
+            $this->category=$category;
+            $this->content=$content;
+            $this->answer=$answer;
+            $this->insert();
+        }
+        
+        function getjudgelist(){
+            return $this->select("type='judge' order by id desc");
+        }
+        
         function getChoicelist(){
             return $this->select("type='choice' order by id desc");
         }
@@ -31,8 +43,8 @@
             return $this->select("type='$type' and category='$category' ORDER BY RAND() limit $count");
         }
         
-        getRaceQuestions($count){
-            return $this->select("type='choice' or type='judge' ORDER BY RNAD() limit $count");
+        function getRaceQuestions($count){
+            return $this->select("type='choice' or type='judge' ORDER BY RAND() limit $count");
         }
     }
 ?>

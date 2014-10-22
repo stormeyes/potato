@@ -12,6 +12,7 @@
         '/get/questions'=>'questions->getquestions',
         '/game/race'=>'questions->race',
         '/add'=>'questions->addChoiceQuestion',
+        '/add/judge'=>'questions->addjudgeQuestion',
         '/article/$id/fuck/$times'=>'article->view'
     );
     //response the request

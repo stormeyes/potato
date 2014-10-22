@@ -49,20 +49,34 @@
             $this->loadview($template='addquestion.php',$params=$data);
         }
         
-        function race(){
-            if($this->auth()){
-                $questions=$this->loadModel('questions');
-                $this->massage['status']='success';
-                $this->massage['questionList']=$questions->getRaceQuestions($count=10);
+        function addjudgeQuestion(){
+            $question=$this->loadModel('questions');
+            if($this->request['method']=='POST'){
+                $question->addjudgeQuestion($_POST['category'],$_POST['content'],$_POST['answer']);
+            }
             
-            $this->loadview($template=false,$params=jsonify($this->massage));
+            $data=$question->getjudgelist();
+            $this->loadview($template='addjudgequestion.php',$params=$data);
+        }
+        
+        function race(){
+          if($this->method='POST'){
+                if($this->auth()){
+                    $questions=$this->loadModel('questions');
+                    $this->massage['status']='success';
+                    $this->massage['questionList']=$questions->getRaceQuestions($count=10);
+                }
+                $this->loadview($template=false,$params=jsonify($this->massage));
+            }else{
+                return error_handler(405);
+            }
         }
         
         function getquestions(){
             $user=$this->loadModel('user');
             $questions=$this->loadModel('questions');
             if($this->request['method']=='POST'){
-                if($this->auth() && $this->formvalidate(array('type'=>'not_empty','category'=>'not_empty','count'=>'number')){
+                if($this->auth() && $this->formvalidate(array('type'=>'not_empty','category'=>'not_empty','count'=>'number'))){
                         $this->massage['status']='success';
                         $this->massage['questionList']=$questions->getQuestions($_POST['type'],$_POST['category'],(int)$_POST['count']);
                    }
