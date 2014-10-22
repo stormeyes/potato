@@ -10,6 +10,7 @@
         '/sendSMS'=>'user->sendSMS',
         '/login'=>'user->login',
         '/get/questions'=>'questions->getquestions',
+        '/game/race'=>'questions->race',
         '/add'=>'questions->addChoiceQuestion',
         '/article/$id/fuck/$times'=>'article->view'
     );

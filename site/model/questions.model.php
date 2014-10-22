@@ -30,5 +30,9 @@
         function getQuestions($type,$category,$count){
             return $this->select("type='$type' and category='$category' ORDER BY RAND() limit $count");
         }
+        
+        getRaceQuestions($count){
+            return $this->select("type='choice' or type='judge' ORDER BY RNAD() limit $count");
+        }
     }
 ?>
