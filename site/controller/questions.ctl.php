@@ -73,10 +73,9 @@
         }
         
         function getquestions(){
-            $user=$this->loadModel('user');
-            $questions=$this->loadModel('questions');
             if($this->request['method']=='POST'){
                 if($this->auth() && $this->formvalidate(array('type'=>'not_empty','category'=>'not_empty','count'=>'number'))){
+                        $questions=$this->loadModel('questions');
                         $this->massage['status']='success';
                         $this->massage['questionList']=$questions->getQuestions($_POST['type'],$_POST['category'],(int)$_POST['count']);
                    }
@@ -87,4 +86,5 @@
             }
         }
     }
+    
 ?>
