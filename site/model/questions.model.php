@@ -40,6 +40,23 @@
         }
         
         function getQuestions($type,$category,$count){
+        /*
+            $result=array();
+            $set=array();
+            $i=0;
+            for($i;$i<1;$i++){
+                $randomquestions=$this->db->query("SELECT *
+FROM {$this->tablename} AS t1 JOIN (SELECT ROUND(RAND() * ((SELECT MAX(id) FROM {$this->tablename})-(SELECT MIN(id) FROM {$this->tablename}))+(SELECT MIN(id) FROM {$this->tablename})) AS id) AS t2 WHERE t1.id >= t2.id ORDER BY t1.id LIMIT 1","array")[0];
+                echo $randomquestions['id'].PHP_EOL;
+                var_dump($randomquestions);
+                $i++;
+                var_dump($randomquestions);
+                
+                //var_dump(get_class_methods($this->db));
+            }
+            return $result;
+            */
+            
             return $this->select("type='$type' and category='$category' ORDER BY RAND() limit $count");
         }
         

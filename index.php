@@ -11,6 +11,7 @@
         '/login'=>'user->login',
         '/get/questions'=>'questions->getquestions',
         '/game/race'=>'questions->race',
+        '/userupdate/mode/single'=>'user->singleupdate',
         '/add'=>'questions->addChoiceQuestion',
         '/add/judge'=>'questions->addjudgeQuestion',
         '/article/$id/fuck/$times'=>'article->view'

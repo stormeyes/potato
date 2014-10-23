@@ -2,6 +2,19 @@
     class user extends BASE_CTL{
         var $massage=Array();
         
+        function auth(){
+            $user=$this->loadModel('user');
+            $studentnumber=encrypt($_POST['authkey'],'D',$CONFIG['SECRET_KEY']);
+            $this->studentnumber=$studentnumber;
+            if(!$user->getUser('studentnumber='.$studentnumber)){
+                $this->massage['status']='error';
+                $this->massage['reason']='authkey错误!';
+                $this->massage['post']=$_POST;
+            }else{
+                return true;
+            }            
+        }        
+                
         function register(){
             if($this->request['method']=='POST'){
                 $user=$this->loadModel('user');
@@ -82,6 +95,9 @@
                 $this->massage['studentnumber']=$singleuser['studentnumber'];
                 $this->massage['lastlogin']=$singleuser['lastlogin'];
                 $this->massage['lastIP']=$singleuser['lastIP'];
+                $this->massage['level']=$singleuser['level'];
+                $this->massage['averageScore']=$singleuser['averageScore'];
+                $this->massage['averageTime']=$singleuser['averageTime'];
                 //we don't use salt as authkey because it's possible that salt be same in different people
                 $this->massage['authkey']=encrypt($singleuser['studentnumber'],'E',$CONFIG['SECRET_KEY']);
             }else{
@@ -91,6 +107,23 @@
             $this->loadview($template=false,$params=jsonify($this->massage));
         }else{
             $this->loadview($template='login.php');
+        }
+     }
+     
+     function singleupdate(){
+        if($this->request['method']=='POST'){
+            if($this->auth()){
+                $user=$this->loadModel('user');
+                $user->updateRace($_POST['score'],$_POST['time'],$this->studentnumber);
+                $this->massage['status']='success';
+                $singleuser=$user->getUser('studentnumber='.$this->studentnumber)[0];
+                $this->massage['level']=$singleuser['level'];
+                $this->massage['averageScore']=$singleuser['averageScore'];
+                $this->massage['averageTime']=$singleuser['averageTime'];
+            }
+            $this->loadview($template=false,$params=jsonify($this->massage));
+        }else{
+            error_handler(405);
         }
      }
         

@@ -11,7 +11,7 @@
         }
         
         function loadModel($modelName){
-            include MODEL_PATH.$modelName.'.model.php';
+            require_once MODEL_PATH.$modelName.'.model.php';
             $model=$modelName.'_model';
             return new $model;
         }

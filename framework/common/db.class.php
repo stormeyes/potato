@@ -20,13 +20,13 @@
 
 		function query($sql,$result_type,$echosql=false){
 			if($echosql){
-				echo 'The SQL command is '.$sql;
+				echo 'The SQL command is[ '.$sql.' ]';
 			}
 			$this->result=mysql_query($sql,$this->connection);
 			if($result_type=='array'){
 				return $this->getResultByArray();
 			}else{
-				return 'This is the result of row type';
+				return $this->result;
 			}
 		}
 
@@ -37,16 +37,6 @@
 			return $this->result_array;
 		}
 
-		function select($where=false){
-			if($where){
-				$result=$this->query('select * from '.$this->tablename.' where '.$where,'array');
-			}else{
-				$result=$this->query('select * from '.$this->tablename,'array');
-			}
-
-			return $result;
-		}
-		
 		function __destruct(){
             mysql_close($this->connection);
         }

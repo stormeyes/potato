@@ -11,8 +11,7 @@
                 $this->massage['post']=$_POST;
             }else{
                 return true;
-            }
-            
+            }   
         }
         
         function formvalidate($formattr){
