@@ -74,10 +74,12 @@
         
         function getquestions(){
             if($this->request['method']=='POST'){
+                //$questions=$this->loadModel('questions');
                 if($this->auth() && $this->formvalidate(array('type'=>'not_empty','category'=>'not_empty','count'=>'number'))){
                         $questions=$this->loadModel('questions');
                         $this->massage['status']='success';
                         $this->massage['questionList']=$questions->getQuestions($_POST['type'],$_POST['category'],(int)$_POST['count']);
+                        //var_dump(get_class_methods($questions));
                    }
                 
                 $this->loadview($template=false,$params=jsonify($this->massage));
