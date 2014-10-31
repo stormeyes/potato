@@ -31,7 +31,7 @@
         
         function update($set,$filter,$echosql=false){
             $update="update ".$this->tablename." set ".$set." where ".$filter;
-            $this->db->query($update);
+            $this->db->query($update,'array',$echosql);
         }
         
         function delete($filter){

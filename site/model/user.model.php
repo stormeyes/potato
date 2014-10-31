@@ -13,6 +13,8 @@
         var $level;
         var $averageScore;
         var $averageTime;
+        var $maxDaliy;
+        var $max;
         
         function getUser($filter){
             return $this->select($filter);
@@ -42,6 +44,15 @@
         
         function updateRace($score,$time,$studentnumber){
             $this->update("averageScore=(averageScore*level+$score)/(level+1),averageTime=(averageTime*level+$time)/(level+1),level=level+1","studentnumber=".$studentnumber);
+        }
+        
+        function updateMax($studentnumber,$max,$maxDaliy,$score){
+            if($score > $max){
+                $this->update("max=$score,maxDaliy=$score","studentnumber=".$studentnumber);
+            }else if($socre > $maxDaliy){
+                $this->update("maxDaliy=$score","studentnumber=".$studentnumber);
+            }else{
+            }
         }
     }
 ?>

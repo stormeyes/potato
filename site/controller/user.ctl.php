@@ -117,9 +117,12 @@
                 $user->updateRace($_POST['score'],$_POST['time'],$this->studentnumber);
                 $this->massage['status']='success';
                 $singleuser=$user->getUser('studentnumber='.$this->studentnumber)[0];
+                $user->updateMax($singleuser['studentnumber'],$singleuser['max'],$singleuser['maxDaliy'],$_POST['score']);
                 $this->massage['level']=$singleuser['level'];
                 $this->massage['averageScore']=$singleuser['averageScore'];
                 $this->massage['averageTime']=$singleuser['averageTime'];
+                $this->massage['max']=$singleuser['max'];
+                $this->massage['maxDaliy']=$singleuser['maxDaliy'];
             }
             $this->loadview($template=false,$params=jsonify($this->massage));
         }else{
