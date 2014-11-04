@@ -134,8 +134,8 @@
         if($this->request['method']=='POST'){
             if($this->auth()){
                 $user=$this->loadModel('user');
-                $this->massage['max']=$user->listrank('max',10);
-                $this->massage['maxDaliy']=$user->listrank('maxDaliy',10);
+                $this->massage['max']=$user->listrank('max',$_POST['limit']);
+                $this->massage['maxDaliy']=$user->listrank('maxDaliy',$_POST['limit']);
             }
             $this->loadview($template=false,$params=jsonify($this->massage));
         }else{
