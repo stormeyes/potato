@@ -54,5 +54,18 @@
             }else{
             }
         }
+        
+        function listrank($type,$limit){
+            $result=$this->db->query("select * from ".$this->tablename." order by ".$type." desc limit ".$limit,"array");
+            $filterResult=array();
+            //echo count($result);
+            foreach($result as $temp){
+                $per=array();
+                $per['studentnumber']=$temp['studentnumber'];
+                $per['score']=$temp[$type];
+                array_push($filterResult,$per);
+            }
+            return $filterResult;
+        }
     }
 ?>

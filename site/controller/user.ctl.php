@@ -129,6 +129,19 @@
             error_handler(405);
         }
      }
-        
+    
+    function listsingle(){
+        if($this->request['method']=='POST'){
+            if($this->auth()){
+                $user=$this->loadModel('user');
+                $this->massage['max']=$user->listrank('max',10);
+                $this->massage['maxDaliy']=$user->listrank('maxDaliy',10);
+            }
+            $this->loadview($template=false,$params=jsonify($this->massage));
+        }else{
+            error_handler(405);
+        }
+    }
+      
     }
 ?>

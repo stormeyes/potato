@@ -31,6 +31,7 @@
 		}
 
 		function getResultByArray(){
+		    $this->result_array=array();
 			while ($result=mysql_fetch_array($this->result,MYSQL_ASSOC)) {
 				array_push($this->result_array, $result);
 			}

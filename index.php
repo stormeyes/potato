@@ -14,6 +14,8 @@
         '/userupdate/mode/single'=>'user->singleupdate',
         '/add'=>'questions->addChoiceQuestion',
         '/add/judge'=>'questions->addjudgeQuestion',
+        '/list/single'=>'user->listsingle',
+        '/list/race'=>'user->listrace',
         '/article/$id/fuck/$times'=>'article->view'
     );
     //response the request
