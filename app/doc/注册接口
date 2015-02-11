@@ -1,0 +1,9 @@
+name    : 注册接口
+usage   : 提供注册功能
+URL     : POST /register
+param   : (studentnumber,name,departmentId,email,password)
+example :
+{
+    "state"=>0,
+    "reason"=>"该学号已经注册"
+}

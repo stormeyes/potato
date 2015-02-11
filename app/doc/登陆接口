@@ -1,0 +1,9 @@
+name    : 登陆接口
+usage   : 提供登陆功能
+URL     : POST /login
+param   : (studentnumber,password)
+example :
+{
+    "state"=>0,
+    "reason"=>"用户名/密码错误"
+}
