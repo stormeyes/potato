@@ -14,7 +14,7 @@ potato给开发者提供的接口与flask相似，这使得从flask转用php的�
 这款框架适合web入门的新手和中等水平的开发者
 
 ###目录
-+ 安装
++ [安装](1.安装.md)
     + 下载代码
     + Nginx配置
 + 快速开始
@@ -35,8 +35,27 @@ potato给开发者提供的接口与flask相似，这使得从flask转用php的�
     + 响应json
     + 重定向
 + 模型
+    + baseModel
+    + query与queryOne
+    + $echo参数
+    + raw方法
 + 视图
+    + 为什么是php后缀
+    + static与media
+    + 控制器到视图之间的变量传递
+    + 前端开发规范建议
 + 工具
-+ 日志
-+ 插件
+    + plugin与utils
+    + 加密与解密类
+    + 邮件类
+    + 上传类
+    + 增强的json
+    + 调试工具
++ 日志(未完成)
 + 源码走读
+    + 为什么如此多的静态类
+    + 一次请求经历的流程
+    + 从index开始
+    + request类
+    + 路由分发
+    + response类
