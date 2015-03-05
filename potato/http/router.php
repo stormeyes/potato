@@ -5,10 +5,11 @@ namespace potato\http;
 use potato\lib\configer as Configer;
 
 class router {
-    public  static $getRouter = array();
-    public  static $postRouter = array();
-    public  static $filterRouter = array();
-    public  static $filterFunc = array();
+    public static $getRouter = array();
+    public static $postRouter = array();
+    public static $getfilter = array();
+    public static $postfilter = array();
+    public static $filterfunc;
 
     static function get(){
         $params=func_get_args();
@@ -55,9 +56,26 @@ class router {
      * todo: validate if $router in $getrouter and $postrouter
      * Howto: array_merge $getrouter and $postrouter then validate key
      */
-    static function filter($callback, $router){
-        self::$filterFunc=$callback;
-        self::$filterRouter=$router;
+    static function filter($router,$callback){
+        self::$getfilter = isset($router['GET'])?$router['GET']:array();
+        self::$postfilter = isset($router['POST'])?$router['POST']:array();
+        self::$filterfunc = $callback;
+    }
+
+    static function urlValidate($url,$method){
+        if($method=='GET'){
+            if(in_array($url,self::$getfilter)){
+                /*
+                 * call_user_func(self::$filterfunc) is ok
+                 * There are only 2 ways to call the anonymous function
+                 */
+                self::$filterfunc->__invoke();
+            }
+        }else{
+            if(in_array($url,self::$postfilter)){
+                self::$filterfunc->__invoke();
+            }
+        }
     }
 
     static function collection(){

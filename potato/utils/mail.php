@@ -47,7 +47,7 @@ class mail {
             Configer::$setting['mail']['smtp']['username'],
             Configer::$setting['mail']['smtp']['password']
         );
-        self::$debug = true;
+        self::$debug = false;
         $mail_from = self::get_address(self::strip_comment(Configer::$setting['mail']['smtp']['from_mail']));
         $subject ="=?".$additional_headers."?B?".base64_encode($subject)."?=";
         $body = preg_replace("/(^|(\r\n))(\\.)/", "\\1.\\3", $body);

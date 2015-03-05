@@ -32,8 +32,10 @@ class response {
 
     static function redirect($url,$message='',$delay_time=0){
         if($message){
-            echo $message;
+            //ajax响应302是不可行的，要么ajax读取要跳转的页面并js端跳转，要么用form而不是ajax
+            header('Content-Type: text/html; charset=utf-8');
             header("Refresh: {$delay_time}; url={$url}");
+            echo $message;
             exit();
         }else {
             header($_SERVER['SERVER_PROTOCOL'] . ' ' . self::$statusMsg[302]);

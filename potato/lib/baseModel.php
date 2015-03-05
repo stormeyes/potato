@@ -42,7 +42,14 @@ class baseModel {
 
     function queryOne($sql,$echo=false){
         if($echo){ echo $sql.'<br>';}
-        $query_result = mysqli_query($this->connection,$sql);
+        $query_result = mysqli_query($this->connection,$sql)
+        or die(mysqli_error($this->connection));
         return $query_result->fetch_array(MYSQLI_ASSOC);
+    }
+
+    function rawQuery($sql,$echo=false){
+        if($echo){ echo $sql.'<br>';}
+        return mysqli_query($this->connection,$sql)
+        or die(mysqli_error($this->connection));
     }
 }

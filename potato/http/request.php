@@ -18,6 +18,12 @@ class request {
             strtoupper($_SERVER['REQUEST_METHOD'])
         );
 
+
+        Router::urlValidate(
+            $_SERVER['REQUEST_URI'],
+            strtoupper($_SERVER['REQUEST_METHOD'])
+        );
+
         return array(
             'classname'=>self::$matchClassname,
             'classmethod'=>self::$matchClassmethod

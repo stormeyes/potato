@@ -8,7 +8,7 @@ class configer {
      * The ROOT PATH can only dymanic decide,
      * so it can't be set const final
      */
-    public static $default_setting=array(
+    protected  static $default_setting=array(
         'debug'=>True,
         'crypt'=>array(
             'salt'=>''
@@ -51,12 +51,15 @@ class configer {
          *are not sure it will run on Linux or Windows
          */
         $ROOT_PATH = dirname(dirname(__DIR__));
+        //todo: change the / to DIRECTORY_SEPARATOR to adapter windows
         self::$default_setting['const'] = array(
             'ROOT_PATH'=>$ROOT_PATH,
             'APP_PATH'=>implode(DIRECTORY_SEPARATOR,array($ROOT_PATH,'app')),
             'Controller_PATH'=>implode(DIRECTORY_SEPARATOR,array($ROOT_PATH,'app/controller')),
             'Model_PATH'=>implode(DIRECTORY_SEPARATOR,array($ROOT_PATH,'app/model')),
-            'Template_PATH'=>implode(DIRECTORY_SEPARATOR,array($ROOT_PATH,'app/template'))
+            'Template_PATH'=>implode(DIRECTORY_SEPARATOR,array($ROOT_PATH,'app/template')),
+            'static_PATH'=>implode(DIRECTORY_SEPARATOR,array($ROOT_PATH,'app/static')),
+            'media_PATH'=>implode(DIRECTORY_SEPARATOR,array($ROOT_PATH,'app/media'))
         );
         /*
          * the customSetting don't have const,so the const
