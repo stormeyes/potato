@@ -14,10 +14,10 @@ potato给开发者提供的接口与flask相似，这使得从flask转用php的�
 这款框架适合web入门的新手和中等水平的开发者
 
 ###目录
-+ [安装](1.安装.md)
++ [安装](potato/doc/1.安装.md)
     + 下载代码
     + Nginx配置
-+ 快速开始
++ [快速开始](potato/doc/2.快速开始.md)
     + Hello world
     + 路由控制
     + 命名规范
