@@ -21,9 +21,9 @@ potato给开发者提供的接口与flask相似，这使得从flask转用php的�
     + 响应POST与GET
     + 数据库查询
     + 渲染视图
-+ 配置(potato/doc/3.配置.md)
++ [配置](potato/doc/3.配置.md)
     + 选项解释
-+ 路由(potato/doc/4.路由.md)
++ [路由](potato/doc/4.路由.md)
     + POST/GET的绑定
     + any绑定
     + 过滤器
