@@ -27,7 +27,7 @@ potato给开发者提供的接口与flask相似，这使得从flask转用php的�
     + POST/GET的绑定
     + any绑定
     + 过滤器
-+ 控制器
++ [控制器](/potato/doc/5.控制器.md)
     + baseController
     + 响应json
     + 重定向
