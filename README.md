@@ -31,12 +31,11 @@ potato给开发者提供的接口与flask相似，这使得从flask转用php的�
     + baseController
     + 响应json
     + 重定向
-+ 模型
++ [模型](/potato/doc/6.模型.md)
     + baseModel
     + query与queryOne
     + $echo参数
-    + raw方法
-+ 视图
++ [视图](/potato/doc/7.视图.md)
     + 为什么是php后缀
     + static与media
     + 控制器到视图之间的变量传递
